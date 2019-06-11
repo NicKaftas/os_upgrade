@@ -1,0 +1,5 @@
+---
+# defaults file for os_upgrade
+
+new_release: pike
+present_release: newton

@@ -1,0 +1,21 @@
+---
+# tasks file for os_upgrade
+- import_playbook: pre-upgrade.yml
+
+- import_playbook: upgrade-keystone.yml
+  when: "inventory_hostname in groups['keystone']"
+
+- import_playbook: upgrade-glance.yml
+  when: "inventory_hostname in groups['glance']"
+
+- import_playbook: upgrade-cinder.yml
+  when: "inventory_hostname in groups['cinder']"
+
+- import_playbook: upgrade-heat.yml
+  when: "inventory_hostname in groups['heat']"
+
+- import_playbook: upgrade-nova.yml
+  when: "inventory_hostname in groups['nova']"
+
+- import_playbook: upgrade-neutron.yml
+  when: "inventory_hostname in groups['neutron']"

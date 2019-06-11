@@ -1,0 +1,26 @@
+- name: Remove {{ present_release }} repo
+  yum_repository:
+   name: "{{ item }}"
+   state: absent
+  with_items:
+   - "centos-release-openstack-{{ present_release }}"
+   - "centos-release-ceph"
+  tags:
+   - pre_upgrade
+
+- name: Add {{ new_release }} repo
+  yum_reposotory: 
+   name: "{{ item }}"
+   state: present
+  with_items:
+   - "centos-release-openstack- {{ new_release }}"
+  tags:
+  - pre_upgrade
+
+- name: Disable the Main Openstack Services 
+
+
+- name : Upgrade Openstack Selinux
+  command: "yum upgrade openstack-selinux"
+  tags:
+  - pre_upgrade

@@ -1,0 +1,7 @@
+- name: Upgrade Openstack Release
+  hosts: all
+  user: root
+  become: yes
+  roles:
+  - os_upgrade
+...
